@@ -23,3 +23,7 @@ val:
 imputer_transform:
   type: pickle.PickleDataSet
   filepath: data/03_primary/imputer.pk
+
+drop_transform:
+  type: pickle.PickleDataSet
+  filepath: data/03_primary/drop_transform.pk

@@ -7,9 +7,17 @@ from typing import Any, Dict, List, Union
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
+from regression_starter.transformers import DropMissingColumns
+
+def drop_missing(
+    df: pd.DataFrame,
+    missing_rate: float) -> pd.DataFrame:
+    drop_transform = DropMissingColumns(missing_rate=missing_rate)
+    df = drop_transform.fit_transform(df)
+    return {"output_data": df, "drop_transform": drop_transform}
 
 
-def fill_na(
+def _fill_na(
     df: pd.DataFrame,
     imputers: List[Dict[str, Any]],
     default_fill_strategy: Dict[str, Any],

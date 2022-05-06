@@ -10,7 +10,19 @@ from sklearn.impute import SimpleImputer
 from regression_starter.transformers import DropMissingColumns
 
 
-def drop_missing(df: pd.DataFrame, missing_rate: float) -> pd.DataFrame:
+def drop_missing(
+    df: pd.DataFrame,
+    missing_rate: float
+) -> pd.DataFrame:
+    """Drop columns with missing columns.
+
+    Args:
+        df (pd.DataFrame): Input Data
+        missing_rate (float): Missing rate
+
+    Returns:
+        Dict[str, Union[pd.DataFrame, SimpleImputer]]: Output data and Transformer
+    """
     drop_transform = DropMissingColumns(missing_rate=missing_rate)
     df = drop_transform.fit_transform(df)
     return {"output_data": df, "drop_transform": drop_transform}
@@ -30,7 +42,7 @@ def fill_na(
         default_fill_strategy (Dict[str, Any]): Default fill strategies.
         fill_skew_th (float): Skeweness threshold to choice between median and mean fill.
     Returns:
-        Dict[str, Union[pd.DataFrame, SimpleImputer]]: _description_
+        Dict[str, Union[pd.DataFrame, SimpleImputer]]: Output data and Inputer
     """
     fill_steps = []
     fill_columns = []

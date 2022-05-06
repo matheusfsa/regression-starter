@@ -7,6 +7,8 @@ from kedro.pipeline import Pipeline, node, pipeline
 
 from .nodes import fill_na, drop_missing
 
+from regression_starter.utils import join_sk_pipelines
+
 
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline(
@@ -32,10 +34,16 @@ def create_pipeline(**kwargs) -> Pipeline:
                     "fill_skew_th": "params:fill_skew_th",
                 },
                 outputs={
-                    "output_data": "filled_data",
+                    "output_data": "preprocessed_data",
                     "imputer": "imputer_transform",
                 },
                 name="filled_data",
+            ),
+            node(
+                func=join_sk_pipelines,
+                inputs=["drop_transform", "imputer_transform"],
+                outputs="preprocess_pipeline",
+                name="join_preprocess_pipe"
             ),
         ]
     )

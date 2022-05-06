@@ -13,7 +13,7 @@ from regression_starter.transformers import DropMissingColumns
 def drop_missing(
     df: pd.DataFrame,
     missing_rate: float
-) -> pd.DataFrame:
+) -> Dict[str, Union[pd.DataFrame, DropMissingColumns]]:
     """Drop columns with missing columns.
 
     Args:
@@ -70,7 +70,8 @@ def fill_na(
     )
 
     imputer_transformer = ColumnTransformer(transformers=fill_steps)
-    df = imputer_transformer.fit_transform(df)
+    data = imputer_transformer.fit_transform(df)
+    data = pd.DataFrame(data=data, columns=df.columns, index=df.index)
     return {"output_data": df, "imputer": imputer_transformer}
 
 

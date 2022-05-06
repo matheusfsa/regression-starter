@@ -5,4 +5,5 @@ __all__ = [
 ]
 def join_sk_pipelines(*pipelines):
     """Function to join pipelines"""
-    return Pipeline(steps=pipelines)
+    steps = [(f"step_{i}", pipe) for i, pipe in enumerate(pipelines)]
+    return Pipeline(steps=steps)

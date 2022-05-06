@@ -4,7 +4,9 @@ generated using Kedro 0.18.0
 """
 
 from kedro.pipeline import Pipeline, node, pipeline
+
 from .nodes import drop_weak_features
+
 
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline(

@@ -7,12 +7,12 @@ from typing import Any, Dict, List, Union
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
+
 from regression_starter.transformers import DropMissingColumns
 
 
 def drop_missing(
-    df: pd.DataFrame,
-    missing_rate: float
+    df: pd.DataFrame, missing_rate: float
 ) -> Dict[str, Union[pd.DataFrame, DropMissingColumns]]:
     """Drop columns with missing columns.
 

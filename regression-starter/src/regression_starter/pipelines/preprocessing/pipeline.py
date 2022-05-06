@@ -5,9 +5,9 @@ generated using Kedro 0.18.0
 
 from kedro.pipeline import Pipeline, node, pipeline
 
-from .nodes import fill_na, drop_missing
-
 from regression_starter.utils import join_sk_pipelines
+
+from .nodes import drop_missing, fill_na
 
 
 def create_pipeline(**kwargs) -> Pipeline:
@@ -43,7 +43,7 @@ def create_pipeline(**kwargs) -> Pipeline:
                 func=join_sk_pipelines,
                 inputs=["drop_transform", "imputer_transform"],
                 outputs="preprocess_pipeline",
-                name="join_preprocess_pipe"
+                name="join_preprocess_pipe",
             ),
         ]
     )

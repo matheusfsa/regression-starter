@@ -9,9 +9,8 @@ from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from regression_starter.transformers import DropMissingColumns
 
-def drop_missing(
-    df: pd.DataFrame,
-    missing_rate: float) -> pd.DataFrame:
+
+def drop_missing(df: pd.DataFrame, missing_rate: float) -> pd.DataFrame:
     drop_transform = DropMissingColumns(missing_rate=missing_rate)
     df = drop_transform.fit_transform(df)
     return {"output_data": df, "drop_transform": drop_transform}
@@ -50,7 +49,7 @@ def fill_na(
 
     fill_steps.append(
         (
-            f"fill_categorical",
+            "fill_categorical",
             SimpleImputer(
                 strategy="constant", fill_value=default_fill_strategy["categorical"]
             ),
@@ -102,10 +101,11 @@ def _fill_numeric_steps(
             )
         else:
             raise ValueError(
-                f"Can only use these strategies: ['mean', 'median', 'most_frequent']  got strategy {strategy}"
+                f"Can only use these strategies: ['mean', 'median', 'most_frequent'] \
+                  got strategy {strategy}"
             )
     else:
         fill_steps.append(
-            (f"fill_numeric", SimpleImputer(fill_value=strategy), numeric_columns)
+            ("fill_numeric", SimpleImputer(fill_value=strategy), numeric_columns)
         )
     return fill_steps

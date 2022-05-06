@@ -36,6 +36,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                     "imputer": "imputer_transform",
                 },
                 name="filled_data",
-            )
+            ),
         ]
     )

@@ -157,3 +157,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# mlflow
+mlruns
+
+# ignore notebooks
+*.ipynb

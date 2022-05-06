@@ -18,3 +18,8 @@ train:
 val:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/val.csv
+
+
+imputer_transform:
+  type: pickle.PickleDataSet
+  filepath: data/03_primary/imputer.pk

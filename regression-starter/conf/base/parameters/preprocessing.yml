@@ -7,21 +7,22 @@ imputers:
   - columns: [PoolQC, MiscFeature, Alley, Fence, FireplaceQu, GarageType, GarageFinish, GarageQual, GarageCond, BsmtQual, BsmtCond, BsmtExposure, BsmtFinType1, BsmtFinType2, MasVnrType, MSSubClass]
     kwargs:
       fill_value: NA
+      strategy: constant
   - columns: [Functional]
     kwargs:
       fill_value: Typ
+      strategy: constant
   - columns: [Electrical, MSZoning, KitchenQual, Exterior1st, Exterior2nd, SaleType]
     kwargs:
       strategy: most_frequent
   - columns: [GarageYrBlt, GarageArea, GarageCars, BsmtFinSF1, BsmtFinSF2, BsmtUnfSF, TotalBsmtSF, BsmtFullBath, BsmtHalfBath, MasVnrArea]
     kwargs:
       fill_value: 0
-  - columns: [MSZoning]
-    kwargs:
-      strategy: mean
+      strategy: constant
 
 default_fill_strategy:
   categorical: NA
   numeric: median_or_mean # Possible Values -> [int or float (ex: 0), mean, median, most_frequent, median_or_mean]
+
 # Skeweness threshold to choice between median and mean fill. Strategy: If skew > th, choice median
 fill_skew_th: 0.5

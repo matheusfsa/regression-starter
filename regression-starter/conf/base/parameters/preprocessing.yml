@@ -26,3 +26,6 @@ default_fill_strategy:
 
 # Skeweness threshold to choice between median and mean fill. Strategy: If skew > th, choice median
 fill_skew_th: 0.5
+
+# Missing rate threshold to drop
+missing_rate: 0.8

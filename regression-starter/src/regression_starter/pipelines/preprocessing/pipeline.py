@@ -19,9 +19,9 @@ def create_pipeline(**kwargs) -> Pipeline:
                 },
                 outputs={
                     "output_data": "data_wo_missing_columns",
-                    "imputer": "drop_transform",
+                    "drop_transform": "drop_transform",
                 },
-                name="filled_data",
+                name="drop_missing",
             ),
             node(
                 func=fill_na,

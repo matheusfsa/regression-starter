@@ -17,7 +17,7 @@ def drop_missing(
     return {"output_data": df, "drop_transform": drop_transform}
 
 
-def _fill_na(
+def fill_na(
     df: pd.DataFrame,
     imputers: List[Dict[str, Any]],
     default_fill_strategy: Dict[str, Any],
